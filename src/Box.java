@@ -1,6 +1,6 @@
 public class Box {
-    private final int DELAY1 = 1000;
-    private final int DELAY3 = 3000;
+    private static final int delayOff = 1000;
+    private static final int delayOn = 3000;
 
     private volatile boolean tumbler;
     private volatile int countIteration;
@@ -14,7 +14,7 @@ public class Box {
             for (int i = 0; i < numberOfIterations; i++) {
                 tumbler = true;
                 System.out.println("Тумблер включен");
-                Thread.sleep(DELAY3);
+                Thread.sleep(delayOn);
                 countIteration++;
             }
             System.out.println("Игра окончена");
@@ -28,7 +28,7 @@ public class Box {
         while (countIteration < max) {
             while (tumbler) {
                 try {
-                    Thread.sleep(DELAY1);
+                    Thread.sleep(delayOff);
                     tumbler = false;
                     System.out.println("Тумблер выключен");
                 } catch (InterruptedException e) {
